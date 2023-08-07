@@ -16,10 +16,13 @@ module.exports = {
       },
       idfkcredito: {
         type: DataTypes.INTEGER,
-        references: { model: 'Creditos', key: 'idcredito' }
+        references: { model: 'Creditos', key: 'idcredito' }  
       },
       tipotransacao: {
         type: DataTypes.STRING
+      },
+      valor: {
+        type: DataTypes.FLOAT(15,8)
       },
       createdAt: {
         allowNull: false,
@@ -33,6 +36,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    return queryInterface.dropTable('Perguntas');
+    return queryInterface.dropTable('Transacoes');
   }
 };

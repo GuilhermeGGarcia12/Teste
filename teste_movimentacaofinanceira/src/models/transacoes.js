@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       },
+      valor: {
+        type: DataTypes.FLOAT(15,8),
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
@@ -20,7 +24,10 @@ module.exports = (sequelize, DataTypes) => {
       },
     });
     Transacoes.associate = (models) => {
-        Transacoes.belongsTo(models.Usuarios,{foreignKey:"idusuarios",as:"idfkusuario"})
+      Transacoes.belongsTo(models.Usuarios,{foreignKey:"idusuario",as:"idfkusuario"})
+    }
+    Transacoes.associate = (models) => {
+      Transacoes.belongsTo(models.Creditos,{foreignKey:"idcredito",as:"idfkcredito"})
     }
     return Transacoes;
   }
